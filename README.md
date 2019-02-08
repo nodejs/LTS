@@ -2,17 +2,13 @@
 
 ## Release schedule
 
-| Release | Status              | Codename   |Initial Release | Active LTS Start | Maintenance LTS Start | End-of-life               |
-| :--:    | :---:               | :---:      | :---:          | :---:            | :---:                 | :---:                     |
-| v0.10.x | **End-of-Life**     | -          | 2013-03-11     | -                | 2015-10-01            | 2016-10-31                |
-| v0.12.x | **End-of-Life**     | -          | 2015-02-06     | -                | 2016-04-01            | 2016-12-31                |
-| [4.x][] | **Maintenance LTS** | [Argon][]  | 2015-09-08     | 2015-10-01       | 2017-04-01            | 2018-04-30                |
-| 5.x     | **End-of-Life**     |            | 2015-10-29     |                  |                       | 2016-06-30                |
-| [6.x][] | **Active LTS**      | [Boron][]  | 2016-04-26     | 2016-10-18       | 2018-04-30            | April 2019                |
-| 7.x     | **End-of-Life**     |            | 2016-10-25     |                  |                       | 2017-06-30                |
-| [8.x][] | **Active LTS**      | [Carbon][] | 2017-05-30     | 2017-10-31       | April 2019            | December 2019<sup>1</sup> |
-| 9.x     | **Current Release** |            | 2017-10-01     |                  |                       | June 2018                 |
-| 10.x    | **Pending**         | Pending    | Apr 2018       | October 2018     | April 2020            | April 2021                |
+| Release  | Status              | Codename    |Initial Release | Active LTS Start | Maintenance LTS Start | End-of-life               |
+| :--:     | :---:               | :---:       | :---:          | :---:            | :---:                 | :---:                     |
+| [6.x][]  | **Maintenance LTS** | [Boron][]   | 2016-04-26     | 2016-10-18       | 2018-04-30            | April 2019                |
+| [8.x][]  | **Active LTS**      | [Carbon][]  | 2017-05-30     | 2017-10-31       | 2019-01-01            | December 2019<sup>1</sup> |
+| [10.x][] | **Active LTS**      | [Dubnium][] | 2018-04-24     | 2018-10-30       | April 2020            | April 2021                |
+| [11.x][] | **Current Release** |             | 2018-10-23     |                  |                       | June 2019                 |
+| 12.x     | **Pending**         |             | 2019-04-23     | October 2019     | April 2021            | April 2022                |
 
 Dates are subject to change.
 
@@ -22,9 +18,18 @@ Dates are subject to change.
 
 <p><img src="schedule.png" alt="LTS Schedule"/></p>
 
-The Release schedule is available also as a [JSON][] file. There is
-also a live [Google Calendar][] that may be subscribed to. The Release schedule
-is generated using the [lts module][].
+The Release schedule is available also as a [JSON][] file.
+
+### End-of-Life Releases
+
+| Release | Status              | Codename   |Initial Release | Active LTS Start | Maintenance LTS Start | End-of-life               |
+| :--:    | :---:               | :---:      | :---:          | :---:            | :---:                 | :---:                     |
+| v0.10.x | **End-of-Life**     | -          | 2013-03-11     | -                | 2015-10-01            | 2016-10-31                |
+| v0.12.x | **End-of-Life**     | -          | 2015-02-06     | -                | 2016-04-01            | 2016-12-31                |
+| [4.x][] | **End-of-Life**     | [Argon][]  | 2015-09-08     | 2015-10-01       | 2017-04-01            | 2018-04-30                |
+| 5.x     | **End-of-Life**     |            | 2015-10-29     |                  |                       | 2016-06-30                |
+| 7.x     | **End-of-Life**     |            | 2016-10-25     |                  |                       | 2017-06-30                |
+| 9.x     | **End-of-Life**     |            | 2017-10-01     |                  |                       | 2018-06-30                |
 
 ## Mandate
 
@@ -52,7 +57,7 @@ teams. These teams are:
 
 The `releasers` team is entrusted with the secrets and CI access to be able
 build and sign releases. **Additions to the releasers team must be approved
-by the TSC.**
+by the TSC following the process outlined in GOVERNANCE.md.**
 
 The Long Term Support (LTS) team manages the process/content of LTS releases
 and the required backporting for these releases. Additions to the LTS
@@ -125,9 +130,10 @@ there is no guarantee that any release will be made.
 
 Every LTS major version has two branches in the GitHub repository: a release
 branch and a staging branch. The release branch is used to cut new releases.
-Only members of the release team should land commits into the release branch.
+Only members of the @nodejs/releasers team should land commits onto release branches.
 The staging branch is used to land cherry-picked or backported commits from
-master that need to be included in a future release.
+master that need to be included in a future release. Only members of
+@nodejs/backporters should land commits onto staging branches.
 
 For example, for Node.js v4, there is a `v4.x` branch and a `v4.x-staging`
 branch. When commits land in master that must be cherry-picked for a future
@@ -146,43 +152,89 @@ any given point in time, fully support a maximum of 2 LTS releases.
 [Argon]: https://nodejs.org/download/release/latest-argon/
 [Boron]: https://nodejs.org/download/release/latest-boron/
 [Carbon]: https://nodejs.org/download/release/latest-carbon/
+[Dubnium]: https://nodejs.org/download/release/latest-dubnium/
 [4.x]: https://nodejs.org/download/release/latest-v4.x/
 [6.x]: https://nodejs.org/download/release/latest-v6.x/
 [8.x]: https://nodejs.org/download/release/latest-v8.x/
-[Google Calendar]: https://calendar.google.com/calendar/ical/eln7trd6k7n6asgg49bu2vqn4s%40group.calendar.google.com/public/basic.ics
+[10.x]: https://nodejs.org/download/release/latest-v10.x/
+[11.x]: https://nodejs.org/download/release/latest-v11.x/
 [JSON]: schedule.json
-[lts module]: https://www.npmjs.com/package/lts
 [`NAN`]: https://github.com/nodejs/nan
 
 The working group members are the union of the LTS, Releasers
 and CITGM team members listed below.
 
 ## LTS Team members
+
+<!-- ncu-team-sync.team(nodejs/lts) -->
+
+- [@addaleax](https://github.com/addaleax) - Anna Henningsen
+- [@BethGriggs](https://github.com/BethGriggs) - Bethany Nicolle Griggs
+- [@bnoordhuis](https://github.com/bnoordhuis) - Ben Noordhuis
+- [@codebytere](https://github.com/codebytere) - Shelley Vohr
+- [@ErisDS](https://github.com/ErisDS) - Hannah Wolfe
 - [@Fishrock123](https://github.com/Fishrock123) - Jeremiah Senkpiel
-- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
+- [@geek](https://github.com/geek) - Wyatt Preul
 - [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
+- [@jasnell](https://github.com/jasnell) - James M Snell
 - [@mhdawson](https://github.com/mhdawson) - Michael Dawson
+- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
+- [@othiym23](https://github.com/othiym23) - Forrest L Norvell
+- [@rvagg](https://github.com/rvagg) - Rod Vagg
+- [@sam-github](https://github.com/sam-github) - Sam Roberts
+- [@shigeki](https://github.com/shigeki) - Shigeki Ohtsu
+- [@srl295](https://github.com/srl295) - Steven R. Loomis
+- [@trevnorris](https://github.com/trevnorris) - Trevor Norris
+- [@yunong](https://github.com/yunong) - Yunong Xiao
+
+<!-- ncu-team-sync end -->
+
+### Backporters team
+
+<!-- ncu-team-sync.team(nodejs/backporters) -->
+
+- [@addaleax](https://github.com/addaleax) - Anna Henningsen
+- [@BethGriggs](https://github.com/BethGriggs) - Bethany Nicolle Griggs
+- [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
+- [@jasnell](https://github.com/jasnell) - James M Snell
+- [@mhdawson](https://github.com/mhdawson) - Michael Dawson
+- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
 - [@sam-github](https://github.com/sam-github) - Sam Roberts
 
+<!-- ncu-team-sync end -->
+
 ### Releasers team
-- [@Fishrock123](https://github.com/Fishrock123) - Jeremiah Senkpiel
-- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
+
+<!-- ncu-team-sync.team(nodejs/releasers) -->
+
+- [@BridgeAR](https://github.com/BridgeAR) - Ruben Bridgewater
 - [@cjihrig](https://github.com/cjihrig) - Colin Ihrig
 - [@evanlucas](https://github.com/evanlucas) - Evan Lucas
+- [@Fishrock123](https://github.com/Fishrock123) - Jeremiah Senkpiel
 - [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
-- [@italoacasas](https://github.com/italoacasas) - Italo A. Casas
 - [@jasnell](https://github.com/jasnell) - James M Snell
+- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
 - [@rvagg](https://github.com/rvagg) - Rod Vagg
+- [@targos](https://github.com/targos) - Michaël Zasso
+
+<!-- ncu-team-sync end -->
 
 ### CITGM team
-- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
+
+<!-- ncu-team-sync.team(nodejs/citgm) -->
+
 - [@al-k21](https://github.com/al-k21) - Oleksandr Kushchak
 - [@bengl](https://github.com/bengl) - Bryan English
+- [@BridgeAR](https://github.com/BridgeAR) - Ruben Bridgewater
 - [@bzoz](https://github.com/bzoz) - Bartosz Sosnowski
 - [@gdams](https://github.com/gdams) - George Adams
 - [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
+- [@jasnell](https://github.com/jasnell) - James M Snell
+- [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
 - [@richardlau](https://github.com/richardlau) - Richard Lau
 - [@targos](https://github.com/targos) - Michaël Zasso
+
+<!-- ncu-team-sync end -->
 
 ### Emeritus
 
